@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-
+from sklearn.model_selection import train_test_split
 #Read data set
 data_set = pd.read_csv("C:/Users/yeai2_6rsknlh/OneDrive/Visual/D600 Task 1/D600 Task 1 Dataset 1 Housing Information.csv")
 
@@ -153,7 +153,20 @@ print("\nDo you want to run part D? (Yes/No)")
 while True:
     user_response = input("")
     if user_response == "Yes":
-        test= test
+
+        print("\nDo you want to run splitting the data? (Yes/No)")
+        while True:
+            user_response = input("")
+            if user_response == "Yes":
+                 
+                #Create copy of analysis_data_set to encoded.
+                analysis_data_set_encoded = analysis_data_set.copy()
+
+                
+
+            elif user_response == "No":
+                print("\nOkay moving on")
+                break 
 
     elif user_response == "No":
                 print("\nOkay moving on")
