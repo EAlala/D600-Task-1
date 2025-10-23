@@ -1,4 +1,6 @@
 import pandas as pd
+import matplotlib as plt
+import seaborn as sns
 
 #Read data set
 data_set = pd.read_csv("C:/Users/yeai2_6rsknlh/OneDrive/Visual/D600 Task 1/D600 Task 1 Dataset 1 Housing Information.csv")
@@ -33,6 +35,7 @@ while True:
         print(f"\n{analysis_data_set["Fireplace"].value_counts()}")
         print(f"\n{analysis_data_set["Garage"].value_counts()}")
         break
-    else:
-        print("Moving on")
+    elif user_response == "No":
+        print("\nOkay moving on")
         break
+
