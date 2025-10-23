@@ -162,7 +162,9 @@ while True:
                 #Create copy of analysis_data_set to encoded.
                 analysis_data_set_encoded = analysis_data_set.copy()
 
-                
+                #Convert categorical variables to numerical
+                analysis_data_set_encoded['Fireplace'] = analysis_data_set_encoded['Fireplace'].map({'Yes': 1, 'No': 0})
+                analysis_data_set_encoded['Garage'] = analysis_data_set_encoded['Garage'].map({'Yes': 1, 'No': 0})
 
             elif user_response == "No":
                 print("\nOkay moving on")
