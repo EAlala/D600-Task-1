@@ -117,8 +117,19 @@ while True:
                 #Create box plot
                 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
 
-                
+                #Boxplot for Fireplace
+                sns.boxplot(data=analysis_data_set, x='Fireplace', y='Price', ax=ax1)
+                ax1.set_title('Price Distribution by Fireplace Presence')
+
+                #Boxplot for Garage
+                sns.boxplot(data=analysis_data_set, x='Garage', y='Price', ax=ax2)
+                ax2.set_title('Price Distribution by Garage Presence')
+
+                #Show visuals
+                plt.tight_layout()
+                plt.show()
                 break
+            
             else:
                 print("\n Okay moving on")
                 break
