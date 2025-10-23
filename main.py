@@ -6,7 +6,7 @@ import seaborn as sns
 data_set = pd.read_csv("C:/Users/yeai2_6rsknlh/OneDrive/Visual/D600 Task 1/D600 Task 1 Dataset 1 Housing Information.csv")
 
 #Descriptive stats
-print("Do you want to run part C? (Yes/No)")
+print("Do you want to run descriptive stats? (Yes/No)")
 while True:
     user_response = input("")
     if user_response == "Yes":
@@ -37,7 +37,7 @@ while True:
         print(f"\n{analysis_data_set["Garage"].value_counts()}")
         
         #Univariate visuals
-        print("\n Do you want to run Univariate visuals? (Yes/No)")
+        print("\nDo you want to run univariate visuals? (Yes/No)")
         while True:
             user_response = input("")
             if user_response == "Yes":
@@ -76,7 +76,7 @@ while True:
                 break
         
         #Bivariate visuals
-        print("\n Do you want to run Bivariate visuals? (Yes/No)")
+        print("\nDo you want to run bivariate visuals? (Yes/No)")
         while True:
             user_response = input("")
             if user_response == "Yes":
@@ -103,6 +103,22 @@ while True:
                 plt.show()
                 break
 
+            else:
+                print("\n Okay moving on")
+                break
+
+        
+        #Categorical variables vs price
+        print("\nDo you want to run categorical variables vs price visuals? (Yes/No)")
+        while True:
+            user_response = input("")
+            if user_response == "Yes":
+
+                #Create box plot
+                fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
+
+                
+                break
             else:
                 print("\n Okay moving on")
                 break
