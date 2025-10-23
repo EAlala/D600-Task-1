@@ -122,8 +122,8 @@ Y = analysis_data_set_encoded["Price"]
 #Split the data (80% training, 20% testing)
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_state=42)
 
-print(f"Training set size: {X_train.shape[0]} samples")
-print(f"Test set size: {X_test.shape[0]} samples")
+print(f"\nTraining set size: {X_train.shape[0]} samples")
+print(f"\nTest set size: {X_test.shape[0]} samples")
 
 #Save datasets to files
 X_train.to_csv('training_features.csv', index=False)
@@ -131,7 +131,7 @@ Y_train.to_csv('training_target.csv', index=False)
 X_test.to_csv('test_features.csv', index=False)
 Y_test.to_csv('test_target.csv', index=False)
 
-print("Training and test datasets saved to files.")
+print("\nTraining and test datasets saved to files.")
 
 #All features
 features = list(X_train.columns)
@@ -154,3 +154,21 @@ for i in range(len(features)):
     else:
         break
 
+#Final optimized model
+X_optimal = sm.add_constant(X_train[optimal_features])
+final_model = sm.OLS(Y_train, X_optimal).fit()
+
+print("\nOPTIMIZED MODEL SUMMARY:")
+print(f"R-squared: {final_model.rsquared:.4f}")
+print(f"Adjusted R-squared: {final_model.rsquared_adj:.4f}")
+print(f"F-statistic: {final_model.fvalue:.4f}")
+print(f"nProb (F-statistic): {final_model.f_pvalue:.4f}")
+
+print("\nCOEFFICIENTS AND P-VALUES:")
+results_df = pd.DataFrame({
+    'Coefficient': final_model.params[1:],
+    'P-value': final_model.pvalues[1:]
+}, index=optimal_features)
+print(results_df.round(4))
+
+#
