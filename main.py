@@ -36,8 +36,8 @@ while True:
         print(f"\n{analysis_data_set["Fireplace"].value_counts()}")
         print(f"\n{analysis_data_set["Garage"].value_counts()}")
         
-        
-        print("Do you want to run Univariate visual? (Yes/No)")
+        #Univariate visuals
+        print("\n Do you want to run Univariate visuals? (Yes/No)")
         while True:
             user_response = input("")
             if user_response == "Yes":
@@ -71,6 +71,25 @@ while True:
                 plt.tight_layout()
                 plt.show()
                 break
+            else:
+                print("\n Okay moving on")
+                break
+        
+        #Bivariate visuals
+        print("\n Do you want to run Bivariate visuals? (Yes/No)")
+        while True:
+            user_response = input("")
+            if user_response == "Yes":
+
+                #Create scatter plot
+                fig, axes = plt.subplots(4, 4, figsize=(20, 16))
+                fig.suptitle('Bivariate Analysis: Relationship of Independent Variables with Price', fontsize=16)
+                axes = axes.ravel()
+                
+                #Scatter plot for each numerical variable against price
+                
+
+
             else:
                 print("\n Okay moving on")
                 break
