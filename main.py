@@ -87,8 +87,14 @@ while True:
                 axes = axes.ravel()
                 
                 #Scatter plot for each numerical variable against price
-                
+                for i, var in enumerate(num_vars[1:]):  # Start from 1 to skip 'Price' itself
+                    if i < len(axes):
+                        axes[i].scatter(analysis_data_set[var], analysis_data_set['Price'], alpha=0.5)
+                        axes[i].set_title(f'Price vs {var}')
+                        axes[i].set_xlabel(var)
+                        axes[i].set_ylabel('Price')
 
+                
 
             else:
                 print("\n Okay moving on")
