@@ -2,6 +2,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.model_selection import train_test_split
+import statsmodels.api as sm
+from sklearn.metrics import mean_squared_error
 
 #Read data set
 data_set = pd.read_csv("C:/Users/yeai2_6rsknlh/OneDrive/Visual/D600 Task 1/D600 Task 1 Dataset 1 Housing Information.csv")
@@ -134,4 +136,21 @@ print("Training and test datasets saved to files.")
 #All features
 features = list(X_train.columns)
 optimal_features = features.copy()
+
+#Backward elimination
+for i in range(len(features)):
+    X_temp = X_train[optimal_features]
+    X_temp = sm.add_constant(X_temp)
+    model = sm.OLS(Y_train, X_temp).fit()
+
+    #Find featuers with highest p-value
+    p_values = model.pvalues[1:]  # Skip intercept
+    max_p = p_values.max()
+    if max_p > 0.05:
+        # Remove feature with p-value > 0.05
+        worst_feature = p_values.idxmax()
+        optimal_features.remove(worst_feature)
+        print(f"Removed {worst_feature} (p-value: {max_p:.4f})")
+    else:
+        break
 
