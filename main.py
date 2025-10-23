@@ -5,6 +5,7 @@ import seaborn as sns
 #Read data set
 data_set = pd.read_csv("C:/Users/yeai2_6rsknlh/OneDrive/Visual/D600 Task 1/D600 Task 1 Dataset 1 Housing Information.csv")
 
+#Descriptive stats
 print("Do you want to run descriptive stats? (Yes/No)")
 while True:
     user_response = input("")
@@ -42,4 +43,8 @@ while True:
 #Visual style
 sns.set_theme(style = "whitegrid")
 
-#
+#Histogram of numerical variables
+fig, axes = plt.subplots(4, 4, figsize=(20, 16))
+fig.suptitle('Univariate Distributions of Numerical Variables', fontsize=16)
+axes = axes.ravel()
+
