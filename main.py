@@ -10,3 +10,6 @@ indep_vars = ["SquareFootage", "NumBathrooms", "NumBedrooms", "BackyardSpace",
     "EmploymentRate", "PropertyTaxRate", "RenovationQuality", "LocalAmenities",
     "TransportAccess", "Fireplace", "Garage"]
 
+#New Dataframe 
+analysis_data_set = data_set[[dep_var] + indep_vars]
+
