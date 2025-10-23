@@ -65,3 +65,7 @@ for i,var in enumerate(num_vars):
 #Hide empty subplots
 for j in range(len(num_vars), len(axes)):
     axes[j].set_visible(False)
+
+#Show visual
+plt.tight_layout()
+plt.show()
