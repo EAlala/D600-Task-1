@@ -174,4 +174,10 @@ print(results_df.round(4))
 #Training MSE
 Y_train_pred = final_model.predict(X_optimal)
 train_mse = mean_squared_error(Y_train, Y_train_pred)
-print(f"Training MSE: {train_mse:.2f}")
+print(f"\nTraining MSE: {train_mse:.2f}")
+
+#Test MSE
+X_test_optimal = sm.add_constant(X_test[optimal_features])
+Y_test_pred = final_model.predict(X_test_optimal)
+test_mse = mean_squared_error(Y_test, Y_test_pred)
+print(f"Test MSE: {test_mse:.2f}")
