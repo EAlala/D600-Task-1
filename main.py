@@ -94,7 +94,14 @@ while True:
                         axes[i].set_xlabel(var)
                         axes[i].set_ylabel('Price')
 
+                #Hide any empty subplots
+                for j in range(len(num_vars)-1, len(axes)):
+                    axes[j].set_visible(False)
                 
+                #Show visual
+                plt.tight_layout()
+                plt.show()
+                break
 
             else:
                 print("\n Okay moving on")
