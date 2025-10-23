@@ -171,4 +171,7 @@ results_df = pd.DataFrame({
 }, index=optimal_features)
 print(results_df.round(4))
 
-#
+#Training MSE
+Y_train_pred = final_model.predict(X_optimal)
+train_mse = mean_squared_error(Y_train, Y_train_pred)
+print(f"Training MSE: {train_mse:.2f}")
