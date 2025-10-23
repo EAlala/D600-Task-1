@@ -54,3 +54,11 @@ num_vars = ["SquareFootage", "NumBathrooms", "NumBedrooms", "BackyardSpace",
             "EmploymentRate", "PropertyTaxRate", "RenovationQuality", "LocalAmenities",
             "TransportAccess", "Fireplace", "Garage"]
 
+#Plot Hisogram for each variable
+for i,var in enumerate(num_vars):
+    if < len(axes)
+        analysis_data_set[var].hist(bins=30, ax=axes[i], edgecolor='black')
+        axes[i].set_title(f'Distribution of {var}')
+        axes[i].set_xlabel(var)
+        axes[i].set_ylabel('Frequency')
+        
