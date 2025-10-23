@@ -6,36 +6,44 @@ import seaborn as sns
 data_set = pd.read_csv("C:/Users/yeai2_6rsknlh/OneDrive/Visual/D600 Task 1/D600 Task 1 Dataset 1 Housing Information.csv")
 
 #Descriptive stats
-print("Do you want to run descriptive stats? (Yes/No)")
+print("Do you want to run part C? (Yes/No)")
 while True:
     user_response = input("")
     if user_response == "Yes":
-        #Define variables
-        dep_var = "Price"
-        indep_vars = ["SquareFootage", "NumBathrooms", "NumBedrooms", "BackyardSpace",
-            "CrimeRate", "SchoolRating", "AgeOfHome", "DistanceToCityCenter",
-            "EmploymentRate", "PropertyTaxRate", "RenovationQuality", "LocalAmenities",
-            "TransportAccess", "Fireplace", "Garage"]
+        print("Do you want to run descriptive stats? (Yes/No)")
+        while True:
+            user_response = input("")
+            if user_response == "Yes":
+                #Define variables
+                dep_var = "Price"
+                indep_vars = ["SquareFootage", "NumBathrooms", "NumBedrooms", "BackyardSpace",
+                    "CrimeRate", "SchoolRating", "AgeOfHome", "DistanceToCityCenter",
+                    "EmploymentRate", "PropertyTaxRate", "RenovationQuality", "LocalAmenities",
+                    "TransportAccess", "Fireplace", "Garage"]
 
-        #New dataframe 
-        analysis_data_set = data_set[[dep_var] + indep_vars]
+                #New dataframe 
+                analysis_data_set = data_set[[dep_var] + indep_vars]
 
-        #Descriptive stats
-        desc_stats = analysis_data_set.describe(include="all").transpose()
+                #Descriptive stats
+                desc_stats = analysis_data_set.describe(include="all").transpose()
 
-        #Mode and range for table
-        desc_stats["mode"] = analysis_data_set.mode().iloc[0]
-        desc_stats["range"] = desc_stats["max"] - desc_stats["min"]
+                #Mode and range for table
+                desc_stats["mode"] = analysis_data_set.mode().iloc[0]
+                desc_stats["range"] = desc_stats["max"] - desc_stats["min"]
 
-        #Clearer presentation
-        final_stats = desc_stats[["count", "mean", "mode", "std", "min", "max", "range"]]
+                #Clearer presentation
+                final_stats = desc_stats[["count", "mean", "mode", "std", "min", "max", "range"]]
 
-        #Display
-        print(final_stats.round(2))
+                #Display
+                print(final_stats.round(2))
 
-        print(f"\n{analysis_data_set["Fireplace"].value_counts()}")
-        print(f"\n{analysis_data_set["Garage"].value_counts()}")
-        
+                print(f"\n{analysis_data_set["Fireplace"].value_counts()}")
+                print(f"\n{analysis_data_set["Garage"].value_counts()}")
+                break
+            elif user_response == "No":
+                print("\nOkay moving on")
+                break 
+                
         #Univariate visuals
         print("\nDo you want to run univariate visuals? (Yes/No)")
         while True:
@@ -71,8 +79,9 @@ while True:
                 plt.tight_layout()
                 plt.show()
                 break
-            else:
-                print("\n Okay moving on")
+
+            elif user_response == "No":
+                print("\nOkay moving on")
                 break
         
         #Bivariate visuals
@@ -103,8 +112,8 @@ while True:
                 plt.show()
                 break
 
-            else:
-                print("\n Okay moving on")
+            elif user_response == "No":
+                print("\nOkay moving on")
                 break
 
         
@@ -129,7 +138,23 @@ while True:
                 plt.tight_layout()
                 plt.show()
                 break
-            
-            else:
-                print("\n Okay moving on")
+
+            elif user_response == "No":
+                print("\nOkay moving on")
                 break
+        break
+    elif user_response == "No":
+                print("\nOkay moving on")
+                break 
+
+
+#Data analysis and report
+print("\nDo you want to run part D? (Yes/No)")
+while True:
+    user_response = input("")
+    if user_response == "Yes":
+        test= test
+
+    elif user_response == "No":
+                print("\nOkay moving on")
+                break 
