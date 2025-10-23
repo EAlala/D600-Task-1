@@ -19,3 +19,6 @@ desc_stats = analysis_data_set.describe(include="all").transpose()
 #Mode and range for table
 desc_stats["mode"] = analysis_data_set.mode().iloc[0]
 desc_stats["range"] = desc_stats["max"] - desc_stats["min"]
+
+#Clearer presentation
+final_stats = desc_stats[["count", "mean", "mode", "std", "min", "max", "range"]]
