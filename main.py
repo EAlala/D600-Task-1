@@ -1,12 +1,12 @@
 import pandas as pd
-import matplotlib as plt
+import matplotlib.pyplot as plt
 import seaborn as sns
 
 #Read data set
 data_set = pd.read_csv("C:/Users/yeai2_6rsknlh/OneDrive/Visual/D600 Task 1/D600 Task 1 Dataset 1 Housing Information.csv")
 
 #Descriptive stats
-print("Do you want to run descriptive stats? (Yes/No)")
+print("Do you want to run part C? (Yes/No)")
 while True:
     user_response = input("")
     if user_response == "Yes":
@@ -35,37 +35,42 @@ while True:
 
         print(f"\n{analysis_data_set["Fireplace"].value_counts()}")
         print(f"\n{analysis_data_set["Garage"].value_counts()}")
-        break
-    elif user_response == "No":
-        print("\nOkay moving on")
-        break
+        
+        
+        print("Do you want to run Univariate visual? (Yes/No)")
+        while True:
+            user_response = input("")
+            if user_response == "Yes":
+                #Visual style
+                sns.set_theme(style = "whitegrid")
 
-#Visual style
-sns.set_theme(style = "whitegrid")
+                #Histogram of numerical variables
+                fig, axes = plt.subplots(4, 4, figsize=(20, 16))
+                fig.suptitle("Univariate Distributions of Numerical Variables", fontsize=16)
+                axes = axes.ravel()
 
-#Histogram of numerical variables
-fig, axes = plt.subplots(4, 4, figsize=(20, 16))
-fig.suptitle("Univariate Distributions of Numerical Variables", fontsize=16)
-axes = axes.ravel()
+                #Numberical varbiables to plot
+                num_vars = ["SquareFootage", "NumBathrooms", "NumBedrooms", "BackyardSpace",
+                            "CrimeRate", "SchoolRating", "AgeOfHome", "DistanceToCityCenter",
+                            "EmploymentRate", "PropertyTaxRate", "RenovationQuality", "LocalAmenities",
+                            "TransportAccess", "Fireplace", "Garage"]
 
-#Numberical varbiables to plot
-num_vars = ["SquareFootage", "NumBathrooms", "NumBedrooms", "BackyardSpace",
-            "CrimeRate", "SchoolRating", "AgeOfHome", "DistanceToCityCenter",
-            "EmploymentRate", "PropertyTaxRate", "RenovationQuality", "LocalAmenities",
-            "TransportAccess", "Fireplace", "Garage"]
+                #Plot Hisogram for each variable
+                for i,var in enumerate(num_vars):
+                    if i < len(axes):
+                        analysis_data_set[var].hist(bins=30, ax=axes[i], edgecolor='black')
+                        axes[i].set_title(f'Distribution of {var}')
+                        axes[i].set_xlabel(var)
+                        axes[i].set_ylabel('Frequency')
 
-#Plot Hisogram for each variable
-for i,var in enumerate(num_vars):
-    if < len(axes)
-        analysis_data_set[var].hist(bins=30, ax=axes[i], edgecolor='black')
-        axes[i].set_title(f'Distribution of {var}')
-        axes[i].set_xlabel(var)
-        axes[i].set_ylabel('Frequency')
+                #Hide empty subplots
+                for j in range(len(num_vars), len(axes)):
+                    axes[j].set_visible(False)
 
-#Hide empty subplots
-for j in range(len(num_vars), len(axes)):
-    axes[j].set_visible(False)
-
-#Show visual
-plt.tight_layout()
-plt.show()
+                #Show visual
+                plt.tight_layout()
+                plt.show()
+                break
+            else:
+                print("\n Okay moving on")
+                break
