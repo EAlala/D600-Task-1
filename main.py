@@ -39,3 +39,7 @@ while True:
         print("\nOkay moving on")
         break
 
+#Visual style
+sns.set_theme(style = "whitegrid")
+
+#
