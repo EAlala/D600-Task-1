@@ -61,4 +61,7 @@ for i,var in enumerate(num_vars):
         axes[i].set_title(f'Distribution of {var}')
         axes[i].set_xlabel(var)
         axes[i].set_ylabel('Frequency')
-        
+
+#Hide empty subplots
+for j in range(len(num_vars), len(axes)):
+    axes[j].set_visible(False)
