@@ -45,6 +45,12 @@ sns.set_theme(style = "whitegrid")
 
 #Histogram of numerical variables
 fig, axes = plt.subplots(4, 4, figsize=(20, 16))
-fig.suptitle('Univariate Distributions of Numerical Variables', fontsize=16)
+fig.suptitle("Univariate Distributions of Numerical Variables", fontsize=16)
 axes = axes.ravel()
+
+#Numberical varbiables to plot
+num_vars = ["SquareFootage", "NumBathrooms", "NumBedrooms", "BackyardSpace",
+            "CrimeRate", "SchoolRating", "AgeOfHome", "DistanceToCityCenter",
+            "EmploymentRate", "PropertyTaxRate", "RenovationQuality", "LocalAmenities",
+            "TransportAccess", "Fireplace", "Garage"]
 
