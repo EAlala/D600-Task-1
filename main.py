@@ -66,10 +66,10 @@ while True:
                 #Plot Hisogram for each variable
                 for i,var in enumerate(num_vars):
                     if i < len(axes):
-                        analysis_data_set[var].hist(bins=30, ax=axes[i], edgecolor='black')
-                        axes[i].set_title(f'Distribution of {var}')
+                        analysis_data_set[var].hist(bins=30, ax=axes[i], edgecolor="black")
+                        axes[i].set_title(f"Distribution of {var}")
                         axes[i].set_xlabel(var)
-                        axes[i].set_ylabel('Frequency')
+                        axes[i].set_ylabel("Frequency")
 
                 #Hide empty subplots
                 for j in range(len(num_vars), len(axes)):
@@ -92,16 +92,16 @@ while True:
 
                 #Create scatter plot
                 fig, axes = plt.subplots(4, 4, figsize=(20, 16))
-                fig.suptitle('Bivariate Analysis: Relationship of Independent Variables with Price', fontsize=16)
+                fig.suptitle("Bivariate Analysis: Relationship of Independent Variables with Price", fontsize=16)
                 axes = axes.ravel()
                 
                 #Scatter plot for each numerical variable against price
-                for i, var in enumerate(num_vars[1:]):  # Start from 1 to skip 'Price' itself
+                for i, var in enumerate(num_vars[1:]):  # Start from 1 to skip "Price" itself
                     if i < len(axes):
-                        axes[i].scatter(analysis_data_set[var], analysis_data_set['Price'], alpha=0.5)
-                        axes[i].set_title(f'Price vs {var}')
+                        axes[i].scatter(analysis_data_set[var], analysis_data_set["Price"], alpha=0.5)
+                        axes[i].set_title(f"Price vs {var}")
                         axes[i].set_xlabel(var)
-                        axes[i].set_ylabel('Price')
+                        axes[i].set_ylabel("Price")
 
                 #Hide any empty subplots
                 for j in range(len(num_vars)-1, len(axes)):
@@ -127,12 +127,12 @@ while True:
                 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
 
                 #Boxplot for Fireplace
-                sns.boxplot(data=analysis_data_set, x='Fireplace', y='Price', ax=ax1)
-                ax1.set_title('Price Distribution by Fireplace Presence')
+                sns.boxplot(data=analysis_data_set, x="Fireplace", y="Price", ax=ax1)
+                ax1.set_title("Price Distribution by Fireplace Presence")
 
                 #Boxplot for Garage
-                sns.boxplot(data=analysis_data_set, x='Garage', y='Price', ax=ax2)
-                ax2.set_title('Price Distribution by Garage Presence')
+                sns.boxplot(data=analysis_data_set, x="Garage", y="Price", ax=ax2)
+                ax2.set_title("Price Distribution by Garage Presence")
 
                 #Show visuals
                 plt.tight_layout()
@@ -163,8 +163,13 @@ while True:
                 analysis_data_set_encoded = analysis_data_set.copy()
 
                 #Convert categorical variables to numerical
-                analysis_data_set_encoded['Fireplace'] = analysis_data_set_encoded['Fireplace'].map({'Yes': 1, 'No': 0})
-                analysis_data_set_encoded['Garage'] = analysis_data_set_encoded['Garage'].map({'Yes': 1, 'No': 0})
+                analysis_data_set_encoded["Fireplace"] = analysis_data_set_encoded["Fireplace"].map({"Yes": 1, "No": 0})
+                analysis_data_set_encoded["Garage"] = analysis_data_set_encoded["Garage"].map({"Yes": 1, "No": 0})
+
+                #Define X (features) and y (target)
+                X = analysis_data_set_encoded.drop("Price", axis=1)
+                Y = analysis_data_set_encoded["Price"]
+                
 
             elif user_response == "No":
                 print("\nOkay moving on")
