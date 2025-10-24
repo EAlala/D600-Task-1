@@ -34,7 +34,6 @@ print(final_stats.round(2))
 
 print(f"\n{analysis_data_set["Fireplace"].value_counts()}")
 print(f"\n{analysis_data_set["Garage"].value_counts()}")
-       
         
 #Univariate visuals
 #Visual style
@@ -91,7 +90,7 @@ plt.show()
 
 
 #Categorical variables vs price
-#Create box plot
+#Create boxplot
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
 
 #Boxplot for Fireplace
@@ -105,7 +104,6 @@ ax2.set_title("Price Distribution by Garage Presence")
 #Show visuals
 plt.tight_layout()
 plt.show()
-
 
 #Data analysis and report  
 #Create copy of analysis_data_set to encoded.
@@ -165,11 +163,11 @@ print(f"F-statistic: {final_model.fvalue:.4f}")
 print(f"nProb (F-statistic): {final_model.f_pvalue:.4f}")
 
 print("\nCOEFFICIENTS AND P-VALUES:")
-results_df = pd.DataFrame({
+results_data_set = pd.DataFrame({
     'Coefficient': final_model.params[1:],
     'P-value': final_model.pvalues[1:]
 }, index=optimal_features)
-print(results_df.round(4))
+print(results_data_set.round(4))
 
 #Training MSE
 Y_train_pred = final_model.predict(X_optimal)
@@ -181,3 +179,4 @@ X_test_optimal = sm.add_constant(X_test[optimal_features])
 Y_test_pred = final_model.predict(X_test_optimal)
 test_mse = mean_squared_error(Y_test, Y_test_pred)
 print(f"Test MSE: {test_mse:.2f}")
+
