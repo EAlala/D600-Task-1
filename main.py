@@ -66,6 +66,15 @@ for j in range(len(num_vars), len(axes)):
 plt.tight_layout()
 plt.show()
 
+#Univariate plot for the dependent variable (Price)
+plt.figure(figsize=(10, 6))
+analysis_data_set['Price'].hist(bins=30, edgecolor='black')
+plt.title('Univariate Distribution of Dependent Variable: Price')
+plt.xlabel('Price')
+plt.ylabel('Frequency')
+plt.tight_layout()
+plt.show()
+
 #Bivariate visuals
 #Create scatter plot
 fig, axes = plt.subplots(4, 4, figsize=(20, 16))
@@ -113,8 +122,8 @@ analysis_data_set_encoded = analysis_data_set.copy()
 analysis_data_set_encoded["Fireplace"] = analysis_data_set_encoded["Fireplace"].map({"Yes": 1, "No": 0})
 analysis_data_set_encoded["Garage"] = analysis_data_set_encoded["Garage"].map({"Yes": 1, "No": 0})
 
-#Define X (features) and y (target)
-X = analysis_data_set_encoded.drop("Price", axis=1)
+#Define X (features) and y (target)d
+X = analysis_data_set_encoded[indep_vars]  # Only use the variables listed in C-1
 Y = analysis_data_set_encoded["Price"]
 
 #Split the data (80% training, 20% testing)
