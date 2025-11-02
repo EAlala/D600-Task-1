@@ -66,15 +66,6 @@ for j in range(len(num_vars), len(axes)):
 plt.tight_layout()
 plt.show()
 
-#Univariate plot for the dependent variable (Price)
-plt.figure(figsize=(10, 6))
-analysis_data_set['Price'].hist(bins=30, edgecolor='black')
-plt.title('Univariate Distribution of Dependent Variable: Price')
-plt.xlabel('Price')
-plt.ylabel('Frequency')
-plt.tight_layout()
-plt.show()
-
 #Bivariate visuals
 #Create scatter plot
 fig, axes = plt.subplots(4, 4, figsize=(20, 16))
