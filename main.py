@@ -6,6 +6,7 @@ import statsmodels.api as sm
 from sklearn.metrics import mean_squared_error
 
 #Read data set
+#Adjust your locaiton to your excel file on your computer 
 data_set = pd.read_csv("C:/Users/yeai2_6rsknlh/OneDrive/Visual/D600 Task 1/D600 Task 1 Dataset 1 Housing Information.csv")
 
 #Descriptive stats
