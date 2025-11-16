@@ -40,7 +40,7 @@ print(f"\n{analysis_data_set["Garage"].value_counts()}")
 sns.set_theme(style = "whitegrid")
 
 #Histogram of numerical variables
-fig, axes = plt.subplots(4, 4, figsize=(20, 16))
+fig, axes = plt.subplots(4, 4, figsize=(15, 12))
 fig.suptitle("Univariate Distributions of Numerical Variables", fontsize=16)
 axes = axes.ravel()
 
@@ -68,7 +68,7 @@ plt.show()
 
 #Bivariate visuals
 #Create scatter plot
-fig, axes = plt.subplots(4, 4, figsize=(20, 16))
+fig, axes = plt.subplots(4, 4, figsize=(15, 12))
 fig.suptitle("Bivariate Analysis: Relationship of Independent Variables with Price", fontsize=16)
 axes = axes.ravel()
 
