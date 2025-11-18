@@ -46,7 +46,7 @@ fig.suptitle("Univariate Distributions of Numerical Variables", fontsize=16)
 axes = axes.ravel()
 
 #Numberical varbiables to plot
-num_vars = ["SquareFootage", "NumBathrooms", "NumBedrooms", "BackyardSpace",
+num_vars = ["Price", "SquareFootage", "NumBathrooms", "NumBedrooms", "BackyardSpace",
             "CrimeRate", "SchoolRating", "AgeOfHome", "DistanceToCityCenter",
             "EmploymentRate", "PropertyTaxRate", "RenovationQuality", "LocalAmenities",
             "TransportAccess", "Fireplace", "Garage"]
@@ -69,7 +69,7 @@ plt.show()
 
 #Bivariate visuals
 #Create scatter plot
-fig, axes = plt.subplots(4, 4, figsize=(15, 12))
+fig, axes = plt.subplots(4, 5, figsize=(15, 12))
 fig.suptitle("Bivariate Analysis: Relationship of Independent Variables with Price", fontsize=16)
 axes = axes.ravel()
 
