@@ -54,10 +54,18 @@ num_vars = ["Price", "SquareFootage", "NumBathrooms", "NumBedrooms", "BackyardSp
 #Plot Hisogram for each variable
 for i,var in enumerate(num_vars):
     if i < len(axes):
-        analysis_data_set[var].hist(bins=30, ax=axes[i], edgecolor="black")
-        axes[i].set_title(f"Distribution of {var}")
-        axes[i].set_xlabel(var)
-        axes[i].set_ylabel("Frequency")
+        if var in ["Fireplace", "Garage"]:
+            # For categorical variables: use bar chart
+            analysis_data_set[var].value_counts().plot(kind='bar', ax=axes[i], edgecolor="black")
+            axes[i].set_title(f"Distribution of {var}")
+            axes[i].set_xlabel(var)
+            axes[i].set_ylabel("Count")
+        else:
+            # For numerical variables: use histogram
+            analysis_data_set[var].hist(bins=30, ax=axes[i], edgecolor="black")
+            axes[i].set_title(f"Distribution of {var}")
+            axes[i].set_xlabel(var)
+            axes[i].set_ylabel("Frequency")
 
 #Hide empty subplots
 for j in range(len(num_vars), len(axes)):
@@ -74,7 +82,11 @@ fig.suptitle("Bivariate Analysis: Relationship of Independent Variables with Pri
 axes = axes.ravel()
 
 #Scatter plot for each numerical variable against price
-for i, var in enumerate(num_vars[1:]):  # Start from 1 to skip "Price" itself
+# Only numerical variables for scatter plots
+numerical_vars = [var for var in num_vars[1:] if var not in ["Fireplace", "Garage"]]
+
+#Scatter plot for each numerical variable against price
+for i, var in enumerate(numerical_vars):  # Now excludes Fireplace and Garage
     if i < len(axes):
         axes[i].scatter(analysis_data_set[var], analysis_data_set["Price"], alpha=0.5)
         axes[i].set_title(f"Price vs {var}")
